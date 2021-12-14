@@ -17,8 +17,8 @@ from sklearn.model_selection import train_test_split
 from PIL import Image
 import os, os.path
 
-
 def loadImgsFromFolder(path):
+    """Функция подгрузки в память массива картинок"""
     imgs = []
     valid_images = [".png"]
     for f in os.listdir(path):
@@ -33,6 +33,7 @@ def loadImgsFromFolder(path):
 
 
 def mean_iou(y_true, y_pred):
+    """Функция-метрика среднее пересечение для сегментации"""
     prec = []
     for t in np.arange(0.5, 1.0, 0.05):
         y_pred_ = tf.to_int32(y_pred > t)
